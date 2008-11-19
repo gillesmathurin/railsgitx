@@ -13,8 +13,6 @@
 #define AUTH_ARG @"--auth"
 #define DB_ARG @"--database="
 #define MyCustomErrorDomain @"com.robertwalker.ErrorDomain"
-#define CreatingRailsProjString NSLocalizedString(@"Creating Git version controlled Ruby on Rails project...\n", @"")
-#define CompletedProjString NSLocalizedString(@"Completed successfully...\n", @"")
 
 const NSInteger MyCustomErrorCode = 1;
 const CGFloat ADDITIONS_HEIGHT = 242.0;
@@ -61,7 +59,8 @@ const CGFloat ADDITIONS_HEIGHT = 242.0;
     }
     else {
         // We've read all the data so log it and enable the UI
-        [self appendToTextView:stdoutTextView withString:CompletedProjString];
+        [self appendToTextView:stdoutTextView
+                    withString:NSLocalizedString(@"Completed successfully...\n", @"")];
         
         [progressIndicator stopAnimation:self];
         [self uiEnabled:YES];
@@ -144,7 +143,8 @@ const CGFloat ADDITIONS_HEIGHT = 242.0;
             [aTask setArguments:args];
             [aTask setStandardOutput:newPipe];
             
-            [self appendToTextView:stdoutTextView withString:CreatingRailsProjString];
+            [self appendToTextView:stdoutTextView 
+                        withString:NSLocalizedString(@"Creating Git version controlled Ruby on Rails project...\n", @"")];
             
             [aTask launch];
             [readHandle waitForDataInBackgroundAndNotify];
