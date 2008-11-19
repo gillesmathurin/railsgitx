@@ -63,6 +63,7 @@ const CGFloat ADDITIONS_HEIGHT = 242.0;
         // We've read all the data so log it and enable the UI
         [self appendToTextView:stdoutTextView withString:CompletedProjString];
         
+        [progressIndicator stopAnimation:self];
         [self uiEnabled:YES];
     }
 }
@@ -148,8 +149,6 @@ const CGFloat ADDITIONS_HEIGHT = 242.0;
             [aTask launch];
             [readHandle waitForDataInBackgroundAndNotify];
         }
-        
-        [progressIndicator stopAnimation:self];
     }
     else {
         // TODO: Find out how to handle presenting the error to the user
